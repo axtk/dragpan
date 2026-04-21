@@ -5,7 +5,7 @@ Enable container panning via dragging
 ```js
 import { setDragPan } from "dragpan";
 
-setDragPan(document.querySelector(".container"), {
+const unset = setDragPan(document.querySelector(".container"), {
   onStart() {
     console.log("start");
   },
