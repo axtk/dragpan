@@ -8,7 +8,8 @@
   "type": "module",
   "scripts": {
     "preversion": "npm run shape",
-    "shape": "npx codeshape"
+    "shape": "npx codeshape",
+    "typecheck": "npx codeshape typecheck"
   },
   "repository": {
     "type": "git",
