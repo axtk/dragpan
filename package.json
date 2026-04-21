@@ -1,0 +1,23 @@
+{
+  "name": "dragpan",
+  "version": "0.1.0",
+  "description": "Enable container panning via dragging",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "preversion": "npm run shape",
+    "shape": "npx codeshape"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/axtk/dragpan.git"
+  },
+  "keywords": [
+    "drag",
+    "pan"
+  ],
+  "license": "MIT",
+  "author": "axtk"
+}
