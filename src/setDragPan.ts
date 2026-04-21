@@ -73,8 +73,6 @@ export function setDragPan(
     onEnd?.();
   }
 
-  element.dataset.draggable = "true";
-
   function isRelevantEvent(event: PointerEvent) {
     return !shouldIgnore(event.target, ignore) && activePointers === 1;
   }
@@ -142,7 +140,13 @@ export function setDragPan(
     }, 200);
   }
 
+  let initialTouchAction = element.style.touchAction;
+
+  let { draggable, dragged } = element.dataset;
+  let initialDataAttrs = { draggable, dragged };
+
   element.style.touchAction = "none";
+  element.dataset.draggable = "true";
 
   element.addEventListener("pointerdown", handlePointerDown);
   element.addEventListener("pointermove", handlePointerMove);
@@ -158,5 +162,12 @@ export function setDragPan(
     element.removeEventListener("pointercancel", handlePointerUp);
 
     if (wheel) element.removeEventListener("wheel", handleWheel);
+
+    element.style.touchAction = initialTouchAction;
+
+    for (let [key, value] of Object.entries(initialDataAttrs)) {
+      if (value === undefined) delete element.dataset[key];
+      else element.dataset[key] = value;
+    }
   };
 }
